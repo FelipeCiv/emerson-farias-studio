@@ -1,4 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Reveal, useScrollProgress } from "@/components/Reveal";
 import heroPortrait from "@/assets/hero-portrait.jpg";
 import aboutPortrait from "@/assets/about-portrait.jpg";
 import workEvent from "@/assets/work-event.jpg";
@@ -96,172 +99,284 @@ const clients = [
   "Leilão do Neymar",
 ];
 
+const marquee = [
+  "Filmmaker",
+  "Live Broadcast",
+  "Stories Maker",
+  "Social Media",
+  "Content Strategy",
+  "Reels & Shorts",
+];
+
 function Index() {
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const progress = useScrollProgress();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a href="#top" className="font-display text-lg tracking-[0.2em] uppercase">
-            Emerson <span className="text-gold-gradient">Farias</span>
+      <div
+        className="fixed inset-x-0 top-0 z-[60] h-[2px] origin-left bg-[image:var(--gradient-silver)]"
+        style={{ transform: `scaleX(${progress})` }}
+        aria-hidden="true"
+      />
+
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+          scrolled
+            ? "border-b border-border bg-background/80 backdrop-blur-xl"
+            : "border-b border-transparent bg-transparent"
+        }`}
+      >
+        <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-4 sm:px-6">
+          <a
+            href="#top"
+            className="min-w-0 truncate font-display text-base tracking-[0.18em] uppercase sm:text-lg"
+          >
+            Emerson <span className="text-silver-gradient">Farias</span>
           </a>
-          <nav className="hidden gap-8 md:flex">
+          <div className="flex shrink-0 items-center gap-6">
+            <nav className="hidden gap-7 lg:flex">
+              {nav.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="link-underline text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+            <a
+              href="#contato"
+              className="btn-silver hidden rounded-full px-5 py-2.5 text-[0.7rem] font-semibold uppercase tracking-[0.16em] sm:inline-block"
+            >
+              Falar comigo
+            </a>
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              aria-label={open ? "Fechar menu" : "Abrir menu"}
+              className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border lg:hidden"
+            >
+              {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            </button>
+          </div>
+        </div>
+
+        <div
+          className={`overflow-hidden border-t border-border bg-background/95 backdrop-blur-xl transition-[max-height,opacity] duration-500 lg:hidden ${
+            open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <nav className="mx-auto flex max-w-6xl flex-col gap-1 px-5 py-4">
             {nav.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="text-xs uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-gold"
+                onClick={() => setOpen(false)}
+                className="rounded-lg px-3 py-3 text-xs uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
               >
                 {item.label}
               </a>
             ))}
           </nav>
-          <a
-            href="#contato"
-            className="btn-gold rounded-sm px-5 py-2.5 text-xs font-medium uppercase tracking-[0.16em]"
-          >
-            Falar comigo
-          </a>
         </div>
       </header>
 
       <main id="top">
         {/* HERO */}
-        <section className="relative overflow-hidden pt-32 pb-20 md:pt-44 md:pb-28">
-          <div className="pointer-events-none absolute -top-40 right-0 h-[36rem] w-[36rem] rounded-full bg-gold/10 blur-[140px]" />
-          <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 md:grid-cols-[1.1fr_0.9fr]">
+        <section className="relative overflow-hidden pt-28 pb-16 sm:pt-32 md:pt-44 md:pb-24">
+          <div className="pointer-events-none absolute -top-40 right-0 h-[30rem] w-[30rem] rounded-full bg-silver/10 blur-[150px] md:h-[38rem] md:w-[38rem]" />
+          <div className="pointer-events-none absolute inset-0 opacity-[0.05] [background-image:linear-gradient(var(--silver)_1px,transparent_1px),linear-gradient(90deg,var(--silver)_1px,transparent_1px)] [background-size:64px_64px]" />
+
+          <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 sm:px-6 md:grid-cols-[1.1fr_0.9fr] md:gap-14">
             <div>
-              <p className="eyebrow">Filmmaker · Live · Estratégia</p>
-              <h1 className="mt-6 text-5xl leading-[1.05] font-semibold md:text-7xl">
-                Emerson
-                <br />
-                <span className="text-gold-gradient">Rodrigues Farias</span>
-              </h1>
-              <p className="mt-7 max-w-lg text-base leading-relaxed text-muted-foreground">
-                Mais de 300 eventos entregues em dois anos ao lado de Pablo Marçal e de grandes
-                players do mercado. Transmissões ao vivo, direção de imagem e estratégia de conteúdo
-                para quem não pode errar no palco nem na tela.
-              </p>
-              <div className="mt-10 flex flex-wrap gap-4">
-                <a
-                  href="#contato"
-                  className="btn-gold rounded-sm px-8 py-3.5 text-xs font-medium uppercase tracking-[0.18em]"
-                >
-                  Solicitar orçamento
-                </a>
-                <a
-                  href="#trabalhos"
-                  className="btn-ghost-gold rounded-sm px-8 py-3.5 text-xs font-medium uppercase tracking-[0.18em]"
-                >
-                  Ver trabalhos
-                </a>
+              <Reveal delay={60}>
+                <p className="eyebrow">Filmmaker · Live · Estratégia</p>
+              </Reveal>
+              <Reveal variant="blur" delay={140}>
+                <h1 className="mt-5 text-4xl leading-[1.05] font-bold sm:text-5xl md:text-7xl">
+                  Emerson
+                  <br />
+                  <span className="text-silver-gradient">Rodrigues Farias</span>
+                </h1>
+              </Reveal>
+              <Reveal delay={240}>
+                <p className="mt-6 max-w-lg text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  Mais de 300 eventos entregues em dois anos ao lado de Pablo Marçal e de grandes
+                  players do mercado. Transmissões ao vivo, direção de imagem e estratégia de
+                  conteúdo para quem não pode errar no palco nem na tela.
+                </p>
+              </Reveal>
+              <Reveal delay={340}>
+                <div className="mt-9 flex flex-wrap gap-3 sm:gap-4">
+                  <a
+                    href="#contato"
+                    className="btn-silver rounded-full px-7 py-3.5 text-[0.7rem] font-semibold uppercase tracking-[0.18em] sm:px-8"
+                  >
+                    Solicitar orçamento
+                  </a>
+                  <a
+                    href="#trabalhos"
+                    className="btn-outline-silver rounded-full px-7 py-3.5 text-[0.7rem] font-semibold uppercase tracking-[0.18em] sm:px-8"
+                  >
+                    Ver trabalhos
+                  </a>
+                </div>
+              </Reveal>
+            </div>
+
+            <Reveal variant="scale" delay={200} className="relative">
+              <div className="float-slow relative">
+                <div
+                  className="absolute -inset-3 rounded-3xl border border-silver/20"
+                  aria-hidden="true"
+                />
+                <img
+                  src={heroPortrait}
+                  alt="Emerson Rodrigues Farias, filmmaker, com câmera de cinema"
+                  width={1024}
+                  height={1280}
+                  className="relative w-full rounded-2xl object-cover grayscale transition-all duration-700 hover:grayscale-0"
+                />
               </div>
-            </div>
-            <div className="relative">
-              <div className="absolute -inset-3 border border-gold/25" aria-hidden="true" />
-              <img
-                src={heroPortrait}
-                alt="Emerson Rodrigues Farias, filmmaker, com câmera de cinema"
-                width={1024}
-                height={1280}
-                className="relative w-full object-cover grayscale-[15%]"
-              />
-            </div>
+            </Reveal>
           </div>
 
-          <div className="mx-auto mt-20 max-w-6xl px-6">
-            <dl className="grid grid-cols-2 gap-px overflow-hidden border border-border bg-border md:grid-cols-4">
-              {stats.map((s) => (
-                <div key={s.label} className="bg-background px-6 py-8">
-                  <dt className="font-display text-3xl text-gold-gradient">{s.value}</dt>
-                  <dd className="mt-2 text-xs uppercase tracking-[0.14em] text-muted-foreground">
+          <div className="relative mx-auto mt-16 max-w-6xl px-5 sm:px-6 md:mt-20">
+            <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-4">
+              {stats.map((s, i) => (
+                <Reveal
+                  key={s.label}
+                  delay={i * 90}
+                  className="bg-background px-5 py-7 transition-colors duration-500 hover:bg-surface sm:px-6 sm:py-8"
+                >
+                  <dt className="font-display text-2xl text-silver-gradient sm:text-3xl">
+                    {s.value}
+                  </dt>
+                  <dd className="mt-2 text-[0.65rem] uppercase tracking-[0.14em] text-muted-foreground sm:text-xs">
                     {s.label}
                   </dd>
-                </div>
+                </Reveal>
               ))}
             </dl>
           </div>
         </section>
 
+        {/* MARQUEE */}
+        <div className="overflow-hidden border-y border-border bg-surface/40 py-5">
+          <div className="marquee-track gap-10">
+            {[...marquee, ...marquee, ...marquee, ...marquee].map((m, i) => (
+              <span
+                key={`${m}-${i}`}
+                className="flex items-center gap-10 font-display text-sm uppercase tracking-[0.28em] text-muted-foreground sm:text-base"
+              >
+                {m}
+                <span className="h-1 w-1 rounded-full bg-silver/60" aria-hidden="true" />
+              </span>
+            ))}
+          </div>
+        </div>
+
         {/* SOBRE */}
-        <section id="sobre" className="border-t border-border bg-surface/40 py-24">
-          <div className="mx-auto grid max-w-6xl items-center gap-16 px-6 md:grid-cols-2">
-            <div className="relative order-2 md:order-1">
+        <section id="sobre" className="py-20 md:py-28">
+          <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 sm:px-6 md:grid-cols-2 md:gap-16">
+            <Reveal variant="left" className="relative order-2 md:order-1">
               <img
                 src={aboutPortrait}
                 alt="Retrato de Emerson Rodrigues Farias em estúdio"
                 width={1008}
                 height={1200}
                 loading="lazy"
-                className="w-full object-cover"
+                className="w-full rounded-2xl object-cover grayscale transition-all duration-700 hover:grayscale-0"
               />
               <div
-                className="absolute -bottom-4 -right-4 h-40 w-40 border-b border-r border-gold/40"
+                className="absolute -bottom-4 -right-4 hidden h-40 w-40 rounded-br-2xl border-b border-r border-silver/40 sm:block"
                 aria-hidden="true"
               />
-            </div>
+            </Reveal>
             <div className="order-1 md:order-2">
-              <p className="eyebrow">Sobre</p>
-              <h2 className="mt-5 text-4xl leading-tight font-semibold md:text-5xl">
-                Bastidores de alto nível, entregues com precisão.
-              </h2>
-              <div className="rule-gold mt-7" />
+              <Reveal>
+                <p className="eyebrow">Sobre</p>
+                <h2 className="mt-5 text-3xl leading-tight font-bold sm:text-4xl md:text-5xl">
+                  Bastidores de alto nível, entregues com precisão.
+                </h2>
+                <div className="rule-silver mt-7" />
+              </Reveal>
               <div className="mt-7 space-y-5 text-sm leading-relaxed text-muted-foreground md:text-base">
-                <p>
-                  Trabalhei dois anos com Pablo Marçal em transmissões de eventos ao vivo, como
-                  stories maker, filmmaker e social media. Foram mais de 300 eventos nesse período —
-                  volume que abriu portas para atuar com outros grandes players e influenciadores do
-                  mercado.
-                </p>
-                <p>
-                  Desde então, assinei produções em eventos como Kiwify, o leilão do Neymar,
-                  podcasts, transmissões ao vivo, eventos corporativos, feiras, shows e festas.
-                  Estive na Copa do Mundo de 2026 através da Rede Ronaldo e já realizei diversos
-                  trabalhos nos Estados Unidos.
-                </p>
-                <p>
-                  Além da câmera, atuo como estrategista de infoprodutores e social media, dirigindo
-                  conteúdo de vlog para YouTube, Reels, Shorts e TikTok com foco em resultado.
-                </p>
+                {[
+                  "Trabalhei dois anos com Pablo Marçal em transmissões de eventos ao vivo, como stories maker, filmmaker e social media. Foram mais de 300 eventos nesse período — volume que abriu portas para atuar com outros grandes players e influenciadores do mercado.",
+                  "Desde então, assinei produções em eventos como Kiwify, o leilão do Neymar, podcasts, transmissões ao vivo, eventos corporativos, feiras, shows e festas. Estive na Copa do Mundo de 2026 através da Rede Ronaldo e já realizei diversos trabalhos nos Estados Unidos.",
+                  "Além da câmera, atuo como estrategista de infoprodutores e social media, dirigindo conteúdo de vlog para YouTube, Reels, Shorts e TikTok com foco em resultado.",
+                ].map((p, i) => (
+                  <Reveal key={i} delay={i * 120}>
+                    <p>{p}</p>
+                  </Reveal>
+                ))}
               </div>
             </div>
           </div>
         </section>
 
         {/* SERVIÇOS */}
-        <section id="servicos" className="border-t border-border py-24">
-          <div className="mx-auto max-w-6xl px-6">
-            <p className="eyebrow">Serviços</p>
-            <h2 className="mt-5 max-w-2xl text-4xl leading-tight font-semibold md:text-5xl">
-              O que eu entrego
-            </h2>
-            <div className="rule-gold mt-7" />
-            <div className="mt-14 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3">
+        <section id="servicos" className="border-t border-border bg-surface/30 py-20 md:py-28">
+          <div className="mx-auto max-w-6xl px-5 sm:px-6">
+            <Reveal>
+              <p className="eyebrow">Serviços</p>
+              <h2 className="mt-5 max-w-2xl text-3xl leading-tight font-bold sm:text-4xl md:text-5xl">
+                O que eu entrego
+              </h2>
+              <div className="rule-silver mt-7" />
+            </Reveal>
+            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {services.map((s, i) => (
-                <article key={s.title} className="lux-card p-8">
-                  <span className="font-display text-sm text-gold/70">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="mt-4 text-xl font-semibold">{s.title}</h3>
+                <Reveal
+                  key={s.title}
+                  as="article"
+                  variant="up"
+                  delay={(i % 3) * 110}
+                  className="glass-card group rounded-2xl p-7 sm:p-8"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-display text-sm text-silver-gradient">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-foreground" />
+                  </div>
+                  <h3 className="mt-4 text-lg font-bold sm:text-xl">{s.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
-                </article>
+                </Reveal>
               ))}
             </div>
           </div>
         </section>
 
         {/* TRABALHOS */}
-        <section id="trabalhos" className="border-t border-border bg-surface/40 py-24">
-          <div className="mx-auto max-w-6xl px-6">
-            <p className="eyebrow">Portfólio</p>
-            <h2 className="mt-5 max-w-2xl text-4xl leading-tight font-semibold md:text-5xl">
-              Trabalhos selecionados
-            </h2>
-            <div className="rule-gold mt-7" />
-            <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {works.map((w) => (
-                <figure
+        <section id="trabalhos" className="border-t border-border py-20 md:py-28">
+          <div className="mx-auto max-w-6xl px-5 sm:px-6">
+            <Reveal>
+              <p className="eyebrow">Portfólio</p>
+              <h2 className="mt-5 max-w-2xl text-3xl leading-tight font-bold sm:text-4xl md:text-5xl">
+                Trabalhos selecionados
+              </h2>
+              <div className="rule-silver mt-7" />
+            </Reveal>
+            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {works.map((w, i) => (
+                <Reveal
                   key={w.title}
-                  className="group relative overflow-hidden border border-border"
+                  as="figure"
+                  variant="scale"
+                  delay={(i % 3) * 110}
+                  className="group relative overflow-hidden rounded-2xl border border-border"
                 >
                   <img
                     src={w.img}
@@ -269,74 +384,91 @@ function Index() {
                     width={1200}
                     height={900}
                     loading="lazy"
-                    className="h-64 w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="h-60 w-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0 sm:h-64"
                   />
-                  <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/85 to-transparent p-6">
-                    <p className="text-[0.65rem] uppercase tracking-[0.22em] text-gold">{w.tag}</p>
-                    <h3 className="mt-2 text-lg font-semibold">{w.title}</h3>
+                  <figcaption className="absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-background via-background/85 to-transparent p-6 transition-transform duration-500 group-hover:translate-y-0">
+                    <p className="text-[0.62rem] uppercase tracking-[0.22em] text-silver">{w.tag}</p>
+                    <h3 className="mt-2 text-base font-bold sm:text-lg">{w.title}</h3>
                   </figcaption>
-                </figure>
+                </Reveal>
               ))}
             </div>
-            <p className="mt-8 text-xs uppercase tracking-[0.16em] text-muted-foreground">
-              Imagens ilustrativas — acervo oficial em atualização.
-            </p>
+            <Reveal>
+              <p className="mt-8 text-[0.65rem] uppercase tracking-[0.16em] text-muted-foreground">
+                Imagens ilustrativas — acervo oficial em atualização.
+              </p>
+            </Reveal>
           </div>
         </section>
 
         {/* CLIENTES */}
-        <section id="clientes" className="border-t border-border py-24">
-          <div className="mx-auto max-w-6xl px-6">
-            <p className="eyebrow">Clientes e parcerias</p>
-            <h2 className="mt-5 max-w-2xl text-4xl leading-tight font-semibold md:text-5xl">
-              Nomes que já estiveram na minha lente
-            </h2>
-            <div className="rule-gold mt-7" />
-            <ul className="mt-14 grid grid-cols-2 gap-px bg-border sm:grid-cols-3 lg:grid-cols-4">
-              {clients.map((c) => (
-                <li
+        <section id="clientes" className="border-t border-border bg-surface/30 py-20 md:py-28">
+          <div className="mx-auto max-w-6xl px-5 sm:px-6">
+            <Reveal>
+              <p className="eyebrow">Clientes e parcerias</p>
+              <h2 className="mt-5 max-w-2xl text-3xl leading-tight font-bold sm:text-4xl md:text-5xl">
+                Nomes que já estiveram na minha lente
+              </h2>
+              <div className="rule-silver mt-7" />
+            </Reveal>
+            <ul className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-border sm:grid-cols-3 lg:grid-cols-4">
+              {clients.map((c, i) => (
+                <Reveal
                   key={c}
-                  className="bg-background px-6 py-8 text-center font-display text-lg tracking-wide text-muted-foreground transition-colors hover:text-gold"
+                  as="li"
+                  delay={(i % 4) * 80}
+                  className="bg-background px-4 py-7 text-center font-display text-base tracking-wide text-muted-foreground transition-all duration-500 hover:bg-surface-2 hover:text-foreground sm:px-6 sm:py-8 sm:text-lg"
                 >
                   {c}
-                </li>
+                </Reveal>
               ))}
             </ul>
           </div>
         </section>
 
         {/* CONTATO */}
-        <section id="contato" className="relative overflow-hidden border-t border-border py-28">
-          <div className="pointer-events-none absolute -bottom-40 left-1/2 h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-gold/10 blur-[140px]" />
-          <div className="relative mx-auto max-w-3xl px-6 text-center">
-            <p className="eyebrow">Contato</p>
-            <h2 className="mt-5 text-4xl leading-tight font-semibold md:text-5xl">
-              Vamos construir a próxima <span className="text-gold-gradient">grande entrega</span>.
-            </h2>
-            <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
-              Disponível para eventos, transmissões ao vivo, produções internacionais e consultoria
-              de conteúdo. Envie os detalhes do seu projeto e retorno com uma proposta.
-            </p>
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <a
-                href="https://wa.me/5500000000000"
-                className="btn-gold rounded-sm px-8 py-3.5 text-xs font-medium uppercase tracking-[0.18em]"
-              >
-                WhatsApp
-              </a>
-              <a
-                href="mailto:contato@emersonfarias.com"
-                className="btn-ghost-gold rounded-sm px-8 py-3.5 text-xs font-medium uppercase tracking-[0.18em]"
-              >
-                E-mail
-              </a>
-            </div>
+        <section
+          id="contato"
+          className="relative overflow-hidden border-t border-border py-24 md:py-32"
+        >
+          <div className="pointer-events-none absolute -bottom-40 left-1/2 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full bg-silver/10 blur-[150px] md:h-[32rem] md:w-[32rem]" />
+          <div className="relative mx-auto max-w-3xl px-5 text-center sm:px-6">
+            <Reveal>
+              <p className="eyebrow">Contato</p>
+              <h2 className="mt-5 text-3xl leading-tight font-bold sm:text-4xl md:text-5xl">
+                Vamos construir a próxima{" "}
+                <span className="text-silver-gradient">grande entrega</span>.
+              </h2>
+            </Reveal>
+            <Reveal delay={140}>
+              <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                Disponível para eventos, transmissões ao vivo, produções internacionais e
+                consultoria de conteúdo. Envie os detalhes do seu projeto e retorno com uma
+                proposta.
+              </p>
+            </Reveal>
+            <Reveal delay={240}>
+              <div className="mt-10 flex flex-wrap justify-center gap-3 sm:gap-4">
+                <a
+                  href="https://wa.me/5500000000000"
+                  className="btn-silver rounded-full px-8 py-3.5 text-[0.7rem] font-semibold uppercase tracking-[0.18em]"
+                >
+                  WhatsApp
+                </a>
+                <a
+                  href="mailto:contato@emersonfarias.com"
+                  className="btn-outline-silver rounded-full px-8 py-3.5 text-[0.7rem] font-semibold uppercase tracking-[0.18em]"
+                >
+                  E-mail
+                </a>
+              </div>
+            </Reveal>
           </div>
         </section>
       </main>
 
       <footer className="border-t border-border py-10">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-xs uppercase tracking-[0.16em] text-muted-foreground md:flex-row">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-5 text-center text-[0.65rem] uppercase tracking-[0.16em] text-muted-foreground sm:px-6 md:flex-row md:text-left">
           <span>Emerson Rodrigues Farias</span>
           <span>Filmmaker · Live · Estratégia de conteúdo</span>
         </div>
