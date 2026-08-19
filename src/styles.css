@@ -162,3 +162,77 @@
     color: var(--color-foreground);
   }
 }
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+  }
+
+  ::selection {
+    background: var(--gold);
+    color: var(--primary-foreground);
+  }
+}
+
+@utility text-gold-gradient {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility rule-gold {
+  height: 1px;
+  width: 3rem;
+  background: var(--gradient-gold);
+}
+
+@utility eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+@utility lux-card {
+  background: linear-gradient(160deg, var(--surface), var(--background));
+  border: 1px solid var(--border);
+  transition:
+    border-color 0.4s ease,
+    transform 0.4s ease;
+
+  &:hover {
+    border-color: color-mix(in oklab, var(--gold) 55%, transparent);
+    transform: translateY(-4px);
+  }
+}
+
+@utility btn-gold {
+  background: var(--gradient-gold);
+  color: var(--primary-foreground);
+  box-shadow: var(--shadow-lux);
+  transition: filter 0.3s ease;
+
+  &:hover {
+    filter: brightness(1.08);
+  }
+}
+
+@utility btn-ghost-gold {
+  border: 1px solid color-mix(in oklab, var(--gold) 45%, transparent);
+  color: var(--gold);
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+
+  &:hover {
+    background: color-mix(in oklab, var(--gold) 12%, transparent);
+  }
+}
