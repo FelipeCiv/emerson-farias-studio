@@ -1,7 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, Instagram, Camera, Images } from "lucide-react";
 import { Reveal, useScrollProgress } from "@/components/Reveal";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import heroPortrait from "@/assets/hero.jpg";
 import aboutPortrait from "@/assets/about.jpg";
 import workEvent from "@/assets/work-event.jpg";
@@ -10,6 +17,9 @@ import workBroadcast from "@/assets/work-broadcast.jpg";
 import workCorporate from "@/assets/work-corporate.jpg";
 import workSocial from "@/assets/work-social.jpg";
 import workSports from "@/assets/work-sports.jpg";
+import logoAnul from "@/parcerias/LOGO ANUL.PNG";
+import logoVisual from "@/parcerias/LOGO VISUAL FILMS.png";
+import logoLuaLev from "@/parcerias/logo_lualeve-1.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -38,7 +48,44 @@ const nav = [
   { label: "Serviços", href: "#servicos" },
   { label: "Trabalhos", href: "#trabalhos" },
   { label: "Clientes", href: "#clientes" },
+  { label: "Parcerias", href: "#parcerias" },
   { label: "Contato", href: "#contato" },
+];
+
+const partnerships = [
+  {
+    name: "Anul Films",
+    role: "Sócio & Produtora Parceira",
+    tagline: "Produção Audiovisual Cinematográfica",
+    desc: "Produtora especializada em filmes comerciais, narrativas cinematográficas de alto impacto e coberturas audiovisuais de grande porte.",
+    logo: logoAnul,
+    logoClassName: "object-cover",
+    instagramUrl:
+      "https://www.instagram.com/anulfilms?igsh=ZzRqMnF0Z3Bod2Rl&igsi=ZzRqMnF0Z3Bod2Rl",
+    handle: "@anulfilms",
+  },
+  {
+    name: "Visual Film",
+    role: "Sócio & Produtora Parceira",
+    tagline: "Direção & Estrutura de Imagem",
+    desc: "Estrutura completa e equipamentos de alta performance para captações dinâmicas, transmissões e produções visuais de alta definição.",
+    logo: logoVisual,
+    logoClassName: "object-cover",
+    instagramUrl:
+      "https://www.instagram.com/visualfilm3?igsh=dmlvZ2l1aTk5Z3do&igsi=dmlvZ2l1aTk5Z3do",
+    handle: "@visualfilm3",
+  },
+  {
+    name: "Lua & Lev",
+    role: "Sócio & Marca Parceira",
+    tagline: "Identidade, Conceito & Estilo",
+    desc: "Marca com estética apurada, conceito autêntico e identidade visual refinada para posicionamento e produtos exclusivos.",
+    logo: logoLuaLev,
+    logoClassName: "object-cover scale-[2.4]",
+    instagramUrl:
+      "https://www.instagram.com/luaelev?igsh=MW9iaWtmbDIwZnJ4Zw==&igsi=MW9iaWtmbDIwZnJ4Zw==",
+    handle: "@luaelev",
+  },
 ];
 
 const stats = [
@@ -84,19 +131,111 @@ const works = [
   { img: workSocial, title: "Conteúdo e bastidores", tag: "Stories · Reels · Shorts" },
 ];
 
-const clients = [
-  "Pablo Marçal",
-  "Cela",
-  "Coringa",
-  "Pyong Lee",
-  "Thallyson",
-  "Aricia",
-  "Marcos Paulo",
-  "Sergião Foguetes",
-  "Red Cast",
-  "Rede Ronaldo",
-  "Kiwify",
-  "Leilão do Neymar",
+export interface ClientEvent {
+  name: string;
+  category: string;
+  highlight: string;
+  description: string;
+  photos: string[];
+}
+
+const clientsData: ClientEvent[] = [
+  {
+    name: "Pablo Marçal",
+    category: "Transmissões ao Vivo & Stories Maker",
+    highlight: "2 anos · 300+ Eventos",
+    description:
+      "Dois anos de atuação contínua na direção de transmissões ao vivo de altíssimo alcance, cobertura em tempo real nos bastidores como stories maker e criação de narrativas estratégicas para grandes eventos presenciais e lançamentos.",
+    photos: [],
+  },
+  {
+    name: "Cela",
+    category: "Stories Maker & Lifestyle",
+    highlight: "Cobertura em Tempo Real",
+    description:
+      "Captação ágil de bastidores com narrativa de stories focada em retenção imediata, conexão com o público e engajamento durante eventos.",
+    photos: [],
+  },
+  {
+    name: "Coringa",
+    category: "Conteúdo Vertical & Eventos",
+    highlight: "Reels, Shorts & Vlog",
+    description:
+      "Produção de conteúdo dinâmico em eventos de entretenimento, unindo linguagem de vlog no YouTube a formatos verticais de alta conversão.",
+    photos: [],
+  },
+  {
+    name: "Pyong Lee",
+    category: "Produção Audiovisual & Eventos",
+    highlight: "Palestras & Bastidores",
+    description:
+      "Captação cinematográfica e cobertura de presença em palestras, convenções e eventos corporativos, com foco em dinamismo, autoridade e retenção.",
+    photos: [],
+  },
+  {
+    name: "Thallyson",
+    category: "Filmmaker & Imersões",
+    highlight: "Eventos Presenciais",
+    description:
+      "Captação de momentos de impacto, palestras e bastidores, criando materiais de posicionamento de alto valor para redes e lançamentos.",
+    photos: [],
+  },
+  {
+    name: "Aricia",
+    category: "Social Media & Stories Maker",
+    highlight: "Eventos & Presença VIP",
+    description:
+      "Cobertura completa com entrega rápida de vídeos e fotos durante o evento, garantindo publicação em tempo real com qualidade refinada.",
+    photos: [],
+  },
+  {
+    name: "Marcos Paulo",
+    category: "Estratégia & Infoprodutos",
+    highlight: "Lançamentos & Imersões",
+    description:
+      "Captação estratégica para infoprodutores, documentando imersões presenciais e gerando insumos visuais para funis de alta performance.",
+    photos: [],
+  },
+  {
+    name: "Sergião Foguetes",
+    category: "Podcasts & Cobertura",
+    highlight: "Gravações & Ciência",
+    description:
+      "Captação em estúdio, registros de palestras e produção de conteúdo dinâmico nos bastidores de gravações e eventos especiais.",
+    photos: [],
+  },
+  {
+    name: "Red Cast",
+    category: "Podcast & Multicâmera",
+    highlight: "Estúdio & Broadcast",
+    description:
+      "Direção técnica de transmissão e gravação multicâmera para podcasts em estúdio, com iluminação profissional e cortes rápidos para YouTube e redes sociais.",
+    photos: [],
+  },
+  {
+    name: "Rede Ronaldo",
+    category: "Produção Internacional",
+    highlight: "Copa do Mundo 2026",
+    description:
+      "Cobertura audiovisual internacional para a Rede Ronaldo nos Estados Unidos, acompanhando grandes momentos esportivos e gerando conteúdo dinâmico.",
+    photos: [],
+  },
+  {
+    name: "Kiwify",
+    category: "Megaeventos & Infoprodutos",
+    highlight: "Kiwify Festival · Imersões",
+    description:
+      "Produção audiovisual e transmissões para um dos maiores ecossistemas de infoprodutos do país, com captação de palcos principais, imersões e aftermovies.",
+    photos: [],
+  },
+  {
+    name: "Leilão do Neymar",
+    category: "Gala & Eventos Beneficentes",
+    highlight: "Cobertura VIP Exclusiva",
+    description:
+      "Direção de imagem e captação de bastidores em evento de gala beneficente, documentando personalidades, leilões ao vivo e momentos exclusivos com padrão de cinema.",
+    photos: [],
+  },
 ];
 
 const marquee = [
@@ -111,6 +250,7 @@ const marquee = [
 function Index() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [selectedClient, setSelectedClient] = useState<ClientEvent | null>(null);
   const progress = useScrollProgress();
 
   useEffect(() => {
@@ -406,24 +546,113 @@ function Index() {
         <section id="clientes" className="border-t border-border bg-surface/30 py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-5 sm:px-6">
             <Reveal>
-              <p className="eyebrow">Clientes e parcerias</p>
+              <p className="eyebrow">Clientes</p>
               <h2 className="mt-5 max-w-2xl text-3xl leading-tight font-bold sm:text-4xl md:text-5xl">
                 Nomes que já estiveram na minha lente
               </h2>
-              <div className="rule-silver mt-7" />
+              <p className="mt-3 text-xs uppercase tracking-[0.18em] text-silver-soft">
+                Clique em qualquer nome para ver detalhes e fotos dos eventos
+              </p>
+              <div className="rule-silver mt-6" />
             </Reveal>
             <ul className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-border sm:grid-cols-3 lg:grid-cols-4">
-              {clients.map((c, i) => (
+              {clientsData.map((c, i) => (
                 <Reveal
-                  key={c}
+                  key={c.name}
                   as="li"
                   delay={(i % 4) * 80}
-                  className="bg-background px-4 py-7 text-center font-display text-base tracking-wide text-muted-foreground transition-all duration-500 hover:bg-surface-2 hover:text-foreground sm:px-6 sm:py-8 sm:text-lg"
+                  className="bg-background transition-all duration-500 hover:bg-surface-2"
                 >
-                  {c}
+                  <button
+                    type="button"
+                    onClick={() => setSelectedClient(c)}
+                    className="group flex h-full w-full flex-col items-center justify-center p-6 text-center cursor-pointer focus:outline-none focus:ring-1 focus:ring-silver/40"
+                  >
+                    <span className="font-display text-base tracking-wide text-muted-foreground transition-all duration-300 group-hover:text-foreground group-hover:scale-105 sm:text-lg">
+                      {c.name}
+                    </span>
+                    <span className="mt-2 flex items-center gap-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-silver-soft opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      <Camera className="h-3 w-3 text-silver" />
+                      <span>Ver evento</span>
+                    </span>
+                  </button>
                 </Reveal>
               ))}
             </ul>
+          </div>
+        </section>
+
+        {/* PARCERIAS & SOCIEDADES */}
+        <section id="parcerias" className="border-t border-border py-20 md:py-28">
+          <div className="mx-auto max-w-6xl px-5 sm:px-6">
+            <Reveal>
+              <p className="eyebrow">Sociedades & Marcas Parceiras</p>
+              <h2 className="mt-5 max-w-2xl text-3xl leading-tight font-bold sm:text-4xl md:text-5xl">
+                Marcas e produtoras que integro como sócio
+              </h2>
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                Estruturas consolidadas de produção audiovisual, cinema e branding que garantem
+                o mais alto padrão de qualidade, escala e entrega para cada projeto.
+              </p>
+              <div className="rule-silver mt-7" />
+            </Reveal>
+
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {partnerships.map((p, i) => (
+                <Reveal
+                  key={p.name}
+                  as="article"
+                  variant="up"
+                  delay={i * 120}
+                  className="glass-card group flex flex-col justify-between rounded-2xl p-7 sm:p-8"
+                >
+                  <div>
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="relative flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-border/80 bg-black shadow-lg transition-transform duration-500 group-hover:scale-105 group-hover:border-silver/50 sm:h-28 sm:w-28">
+                        <img
+                          src={p.logo}
+                          alt={`Logo ${p.name}`}
+                          width={200}
+                          height={200}
+                          loading="lazy"
+                          className={`h-full w-full rounded-2xl ${p.logoClassName || "object-cover"}`}
+                        />
+                      </div>
+                      <span className="rounded-full border border-silver/30 bg-silver/10 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-silver">
+                        {p.role}
+                      </span>
+                    </div>
+
+                    <div className="mt-6">
+                      <h3 className="font-display text-xl font-bold tracking-tight sm:text-2xl">
+                        {p.name}
+                      </h3>
+                      <p className="mt-1 text-[0.68rem] font-medium uppercase tracking-[0.18em] text-silver-soft">
+                        {p.tagline}
+                      </p>
+                      <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                        {p.desc}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-8 border-t border-border/60 pt-5">
+                    <a
+                      href={p.instagramUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-outline-silver flex w-full items-center justify-between gap-2 rounded-xl px-4 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.16em] transition-all"
+                    >
+                      <span className="flex items-center gap-2">
+                        <Instagram className="h-4 w-4 text-silver" />
+                        <span>Acessar Instagram</span>
+                      </span>
+                      <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </a>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -467,6 +696,78 @@ function Index() {
           </div>
         </section>
       </main>
+
+      {/* DIALOG DETALHES DO EVENTO & FOTOS */}
+      <Dialog
+        open={Boolean(selectedClient)}
+        onOpenChange={(isOpen) => !isOpen && setSelectedClient(null)}
+      >
+        <DialogContent className="max-w-2xl max-h-[88vh] overflow-y-auto border border-border bg-background/95 p-6 backdrop-blur-2xl sm:rounded-2xl sm:p-8">
+          {selectedClient && (
+            <div>
+              <DialogHeader className="text-left">
+                <div className="flex flex-wrap items-center justify-between gap-2 pr-6">
+                  <span className="eyebrow">{selectedClient.category}</span>
+                  <span className="rounded-full border border-silver/30 bg-silver/10 px-3 py-0.5 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-silver">
+                    {selectedClient.highlight}
+                  </span>
+                </div>
+                <DialogTitle className="mt-3 font-display text-2xl font-bold tracking-tight sm:text-3xl text-foreground">
+                  {selectedClient.name}
+                </DialogTitle>
+                <DialogDescription className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {selectedClient.description}
+                </DialogDescription>
+              </DialogHeader>
+
+              {/* GALERIA DE FOTOS */}
+              <div className="mt-6 border-t border-border pt-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h4 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-foreground">
+                    <Images className="h-4 w-4 text-silver" />
+                    <span>Galeria do Evento</span>
+                  </h4>
+                  <span className="text-[0.65rem] uppercase tracking-[0.14em] text-muted-foreground">
+                    {selectedClient.photos.length > 0
+                      ? `${selectedClient.photos.length} fotos`
+                      : "Acervo em atualização"}
+                  </span>
+                </div>
+
+                {selectedClient.photos.length > 0 ? (
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+                    {selectedClient.photos.map((photo, idx) => (
+                      <div
+                        key={idx}
+                        className="group/photo relative aspect-square overflow-hidden rounded-xl border border-border bg-surface"
+                      >
+                        <img
+                          src={photo}
+                          alt={`${selectedClient.name} - Foto ${idx + 1}`}
+                          className="h-full w-full object-cover transition-transform duration-500 group-hover/photo:scale-105"
+                          loading="lazy"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-silver/25 bg-surface/40 p-8 text-center sm:p-10">
+                    <div className="grid h-12 w-12 place-items-center rounded-full border border-silver/30 bg-silver/10 text-silver">
+                      <Camera className="h-6 w-6" />
+                    </div>
+                    <p className="mt-4 font-display text-sm font-semibold tracking-wide text-foreground sm:text-base">
+                      Fotos em separação no acervo
+                    </p>
+                    <p className="mt-2 max-w-sm text-xs leading-relaxed text-muted-foreground">
+                      As fotos em alta resolução deste evento estão sendo organizadas e serão adicionadas em breve.
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
 
       <footer className="border-t border-border py-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-5 text-center text-[0.65rem] uppercase tracking-[0.16em] text-muted-foreground sm:px-6 md:flex-row md:text-left">
