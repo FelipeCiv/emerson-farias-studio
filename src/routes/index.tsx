@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Reveal, useScrollProgress } from "@/components/Reveal";
-import heroPortrait from "@/assets/hero-portrait.jpg";
-import aboutPortrait from "@/assets/about-portrait.jpg";
+import heroPortrait from "@/assets/hero.jpg";
+import aboutPortrait from "@/assets/about.jpg";
 import workEvent from "@/assets/work-event.jpg";
 import workPodcast from "@/assets/work-podcast.jpg";
 import workBroadcast from "@/assets/work-broadcast.jpg";
@@ -271,17 +271,18 @@ function Index() {
           </div>
         </section>
 
-        {/* MARQUEE */}
-        <div className="overflow-hidden border-y border-border bg-surface/40 py-5">
-          <div className="marquee-track gap-10">
-            {[...marquee, ...marquee, ...marquee, ...marquee].map((m, i) => (
-              <span
-                key={`${m}-${i}`}
-                className="flex items-center gap-10 font-display text-sm uppercase tracking-[0.28em] text-muted-foreground sm:text-base"
-              >
-                {m}
-                <span className="h-1 w-1 rounded-full bg-silver/60" aria-hidden="true" />
-              </span>
+        {/* SPECIALTIES / PILLARS (STATIC) */}
+        <div className="border-y border-border bg-surface/40 py-5">
+          <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-6 gap-y-3 px-5 sm:gap-x-10 sm:px-6">
+            {marquee.map((m, i) => (
+              <div key={m} className="flex items-center gap-6 sm:gap-10">
+                <span className="font-display text-xs uppercase tracking-[0.26em] text-muted-foreground transition-colors duration-300 hover:text-foreground sm:text-sm">
+                  {m}
+                </span>
+                {i < marquee.length - 1 && (
+                  <span className="hidden h-1 w-1 rounded-full bg-silver/50 sm:inline-block" aria-hidden="true" />
+                )}
+              </div>
             ))}
           </div>
         </div>
