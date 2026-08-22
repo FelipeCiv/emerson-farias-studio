@@ -56,9 +56,16 @@ export function Reveal({
 export function useScrollProgress() {
   const [progress, setProgress] = useState(0);
   useEffect(() => {
+    let ticking = false;
     const onScroll = () => {
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(h > 0 ? window.scrollY / h : 0);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const h = document.documentElement.scrollHeight - window.innerHeight;
+          setProgress(h > 0 ? window.scrollY / h : 0);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });

@@ -162,6 +162,7 @@
   opacity: 1;
   transform: none;
   filter: none;
+  will-change: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {
