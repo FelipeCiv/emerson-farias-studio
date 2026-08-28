@@ -81,7 +81,7 @@ const partnerships = [
     tagline: "Identidade, Conceito & Estilo",
     desc: "Marca com estética apurada, conceito autêntico e identidade visual refinada para posicionamento e produtos exclusivos.",
     logo: logoLuaLev,
-    logoClassName: "object-cover scale-[2.4]",
+    logoClassName: "object-contain p-1",
     instagramUrl:
       "https://www.instagram.com/luaelev?igsh=MW9iaWtmbDIwZnJ4Zw==&igsi=MW9iaWtmbDIwZnJ4Zw==",
     handle: "@luaelev",
@@ -442,7 +442,7 @@ function Index() {
                       <div>
                         <div className="flex items-center justify-between gap-3">
                           <div className="flex items-center gap-3 min-w-0">
-                            <div className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border/80 bg-black shadow-sm transition-transform duration-300 group-hover:scale-105">
+                            <div className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border/80 bg-black shadow-sm transition-transform duration-300 group-hover:scale-105 pointer-events-none">
                               <img
                                 src={p.logo}
                                 alt={`Logo ${p.name}`}
@@ -450,7 +450,7 @@ function Index() {
                                 height={40}
                                 loading="lazy"
                                 decoding="async"
-                                className={`h-full w-full rounded-lg ${p.logoClassName || "object-cover"}`}
+                                className={`h-full w-full rounded-lg select-none ${p.logoClassName || "object-cover"}`}
                               />
                             </div>
                             <div className="min-w-0">
