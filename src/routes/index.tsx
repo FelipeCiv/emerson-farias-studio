@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowUpRight, Instagram, Camera, Images } from "lucide-react";
+import { Menu, X, ArrowUpRight, Instagram, Camera, Images, Globe, Sparkles, Layout, Monitor } from "lucide-react";
 import { Reveal, useScrollProgress } from "@/components/Reveal";
 import {
   Dialog,
@@ -46,6 +46,7 @@ export const Route = createFileRoute("/")({
 const nav = [
   { label: "Sobre", href: "#sobre" },
   { label: "Serviços", href: "#servicos" },
+  { label: "Sites", href: "#sites" },
   { label: "Trabalhos", href: "#trabalhos" },
   { label: "Clientes", href: "#clientes" },
   { label: "Parcerias", href: "#parcerias" },
@@ -105,6 +106,10 @@ const services = [
     desc: "Captação e direção cinematográfica de eventos, shows, feiras e produções corporativas no Brasil e nos Estados Unidos.",
   },
   {
+    title: "Criação de Sites & Landing Pages",
+    desc: "Desenvolvimento de páginas profissionais, ultra rápidas e com design refinado para eventos, lançamentos e marcas pessoais.",
+  },
+  {
     title: "Stories maker",
     desc: "Cobertura em tempo real com narrativa: bastidores, cortes e entregas prontas para publicar ainda durante o evento.",
   },
@@ -115,10 +120,6 @@ const services = [
   {
     title: "Estratégia para infoprodutores",
     desc: "Planejamento de conteúdo conectado à jornada de venda: aquecimento, lançamento e sustentação de audiência.",
-  },
-  {
-    title: "Vlog, Reels, Shorts e TikTok",
-    desc: "Estratégia e direção de conteúdo vertical e vlogs para YouTube, com estrutura de retenção e crescimento.",
   },
 ];
 
@@ -577,6 +578,131 @@ function Index() {
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
                 </Reveal>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* SITES & ESTRUTURA DIGITAL */}
+        <section id="sites" className="relative overflow-hidden border-t border-border bg-background py-20 md:py-28">
+          <div className="pointer-events-none absolute -top-24 right-10 h-[22rem] w-[22rem] rounded-full bg-silver/10 blur-[140px]" />
+          
+          <div className="mx-auto max-w-6xl px-5 sm:px-6">
+            <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-gradient-to-br from-surface/80 via-surface/40 to-background/90 p-7 sm:p-10 md:p-14 shadow-2xl">
+              <div className="pointer-events-none absolute inset-0 opacity-[0.04] [background-image:linear-gradient(var(--silver)_1px,transparent_1px),linear-gradient(90deg,var(--silver)_1px,transparent_1px)] [background-size:32px_32px]" />
+
+              <div className="relative grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
+                <div>
+                  <Reveal>
+                    <div className="inline-flex items-center gap-2 rounded-full border border-silver/30 bg-silver/10 px-3.5 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-silver">
+                      <Globe className="h-3.5 w-3.5 text-silver" />
+                      <span>Presença Web & Conversão</span>
+                    </div>
+                    <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
+                      Criação de sites{" "}
+                      <span className="text-silver-gradient">profissionais & estilosos</span>.
+                    </h2>
+                  </Reveal>
+
+                  <Reveal delay={120}>
+                    <p className="mt-5 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                      A entrega do seu projeto não para no vídeo: disponibilizamos também o desenvolvimento de sites e landing pages completas dentro do pacote de serviços. Páginas modernas, ultra rápidas e com identidade visual alinhada à autoridade da sua marca.
+                    </p>
+                  </Reveal>
+
+                  <Reveal delay={200}>
+                    <div className="mt-8 grid grid-cols-1 gap-3.5 sm:grid-cols-2">
+                      <div className="rounded-xl border border-border/70 bg-background/70 p-4 transition-colors hover:border-silver/40">
+                        <div className="flex items-center gap-2.5 text-foreground">
+                          <Layout className="h-4 w-4 text-silver" />
+                          <h4 className="font-display text-xs font-bold uppercase tracking-wider">
+                            Design Exclusivo & Estiloso
+                          </h4>
+                        </div>
+                        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                          Estética premium dark mode, tipografia refinada e layout sob medida para causar impacto imediato.
+                        </p>
+                      </div>
+
+                      <div className="rounded-xl border border-border/70 bg-background/70 p-4 transition-colors hover:border-silver/40">
+                        <div className="flex items-center gap-2.5 text-foreground">
+                          <Sparkles className="h-4 w-4 text-silver" />
+                          <h4 className="font-display text-xs font-bold uppercase tracking-wider">
+                            Foco em Conversão
+                          </h4>
+                        </div>
+                        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                          Páginas otimizadas para carregamento instantâneo no celular, captura de leads e vendas de eventos.
+                        </p>
+                      </div>
+                    </div>
+                  </Reveal>
+
+                  <Reveal delay={280}>
+                    <div className="mt-8 flex flex-wrap items-center gap-4">
+                      <a
+                        href="#contato"
+                        className="btn-silver rounded-full px-7 py-3.5 text-[0.7rem] font-semibold uppercase tracking-[0.18em]"
+                      >
+                        Incluir site no projeto
+                      </a>
+                      <span className="text-[0.65rem] uppercase tracking-[0.14em] text-silver-soft">
+                        Disponível em pacote integrado ou projeto avulso
+                      </span>
+                    </div>
+                  </Reveal>
+                </div>
+
+                {/* Mockup Interativo Visual */}
+                <Reveal variant="scale" delay={180}>
+                  <div className="relative rounded-2xl border border-silver/30 bg-background/95 p-5 shadow-2xl sm:p-6">
+                    <div className="flex items-center justify-between border-b border-border/60 pb-3.5">
+                      <div className="flex items-center gap-1.5">
+                        <span className="h-2.5 w-2.5 rounded-full bg-red-500/70" />
+                        <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/70" />
+                        <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/70" />
+                      </div>
+                      <div className="flex items-center gap-1.5 rounded-full border border-border/60 bg-surface/60 px-3 py-0.5 font-mono text-[0.58rem] text-muted-foreground">
+                        <Monitor className="h-3 w-3 text-silver" />
+                        <span>emersonfarias.com/site</span>
+                      </div>
+                    </div>
+
+                    <div className="mt-4 space-y-3">
+                      <div className="rounded-xl border border-silver/20 bg-surface/50 p-4">
+                        <div className="flex items-center justify-between">
+                          <span className="eyebrow text-[0.58rem]">Landing Page</span>
+                          <span className="rounded-full border border-silver/30 bg-silver/10 px-2 py-0.5 text-[0.55rem] font-semibold uppercase tracking-wider text-silver">
+                            Alta Conversão
+                          </span>
+                        </div>
+                        <div className="mt-3 space-y-2">
+                          <div className="h-3 w-3/4 rounded bg-silver/30" />
+                          <div className="h-2 w-1/2 rounded bg-silver/15" />
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-2.5">
+                        <div className="rounded-xl border border-border/60 bg-surface/30 p-3">
+                          <span className="font-display text-[0.62rem] font-bold uppercase tracking-wider text-foreground">
+                            Institucional
+                          </span>
+                          <p className="mt-1 text-[0.6rem] leading-relaxed text-muted-foreground">
+                            Posicionamento e autoridade de marca.
+                          </p>
+                        </div>
+                        <div className="rounded-xl border border-border/60 bg-surface/30 p-3">
+                          <span className="font-display text-[0.62rem] font-bold uppercase tracking-wider text-foreground">
+                            Eventos & Imersões
+                          </span>
+                          <p className="mt-1 text-[0.6rem] leading-relaxed text-muted-foreground">
+                            Venda de ingressos e inscrições.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Reveal>
+              </div>
             </div>
           </div>
         </section>
