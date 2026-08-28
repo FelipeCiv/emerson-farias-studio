@@ -413,8 +413,8 @@ function Index() {
 
           {/* PARCERIAS & SOCIEDADES (TOPO) */}
           <div id="parcerias" className="relative mx-auto mt-8 max-w-6xl scroll-mt-28 px-5 sm:px-6">
-            <Reveal delay={140}>
-              <div className="glass-card rounded-2xl border border-border/80 p-5 sm:p-7">
+            <Reveal delay={100}>
+              <div className="relative rounded-2xl border border-border/80 bg-surface/35 p-5 backdrop-blur-sm sm:p-7 shadow-sm">
                 {/* Header da seção */}
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                   <div className="flex items-center gap-3">
@@ -432,17 +432,17 @@ function Index() {
                 </div>
 
                 {/* Cards de parceiros */}
-                <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4">
+                <div className="mt-5 grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4">
                   {partnerships.map((p) => (
                     <div
                       key={p.name}
                       onClick={() => setSelectedPartner(p)}
-                      className="group relative flex flex-col justify-between rounded-xl border border-border/70 bg-background/80 p-4 transition-all duration-300 hover:border-silver/50 hover:bg-surface-2/80 hover:-translate-y-1 hover:shadow-lg cursor-pointer"
+                      className="group relative flex flex-col justify-between rounded-xl border border-border/70 bg-background/90 p-4.5 transition-all duration-300 ease-out hover:border-silver/60 hover:bg-surface-2/90 hover:-translate-y-1 hover:shadow-lg cursor-pointer transform-gpu"
                     >
                       <div>
                         <div className="flex items-center justify-between gap-3">
                           <div className="flex items-center gap-3 min-w-0">
-                            <div className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border/80 bg-black shadow-sm">
+                            <div className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border/80 bg-black shadow-sm transition-transform duration-300 group-hover:scale-105">
                               <img
                                 src={p.logo}
                                 alt={`Logo ${p.name}`}
@@ -454,7 +454,7 @@ function Index() {
                               />
                             </div>
                             <div className="min-w-0">
-                              <h4 className="font-display text-sm font-bold text-foreground">
+                              <h4 className="font-display text-sm font-bold text-foreground transition-colors group-hover:text-foreground">
                                 {p.name}
                               </h4>
                               <span className="mt-0.5 inline-block rounded border border-silver/25 bg-silver/10 px-1.5 py-0.5 text-[0.56rem] font-semibold uppercase tracking-wider text-silver whitespace-nowrap">
@@ -468,19 +468,19 @@ function Index() {
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
-                            className="grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-border/70 bg-surface/50 text-muted-foreground transition-all duration-300 hover:border-silver/60 hover:bg-silver/10 hover:text-foreground"
+                            className="grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-border/70 bg-surface/60 text-muted-foreground transition-all duration-200 hover:border-silver/60 hover:bg-silver/15 hover:text-foreground hover:scale-105 active:scale-95"
                             title={`Instagram ${p.handle}`}
                           >
                             <Instagram className="h-4 w-4" />
                           </a>
                         </div>
 
-                        <p className="mt-3 text-xs leading-relaxed text-muted-foreground line-clamp-2">
+                        <p className="mt-3 min-h-[2.5rem] text-xs leading-relaxed text-muted-foreground line-clamp-2">
                           {p.desc}
                         </p>
                       </div>
 
-                      <div className="mt-3 flex items-center justify-between border-t border-border/40 pt-2.5 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-silver-soft group-hover:text-silver transition-colors">
+                      <div className="mt-3.5 flex items-center justify-between border-t border-border/40 pt-2.5 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-silver-soft group-hover:text-silver transition-colors duration-200">
                         <span>Ver detalhes</span>
                         <ArrowUpRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </div>
