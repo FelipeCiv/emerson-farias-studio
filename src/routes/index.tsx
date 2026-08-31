@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowUpRight, Instagram, Camera, Images, Globe, Sparkles, Layout, Monitor } from "lucide-react";
+import { Menu, X, ArrowUpRight, Instagram, Camera, Images, Globe, Sparkles, Layout, Monitor, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal, useScrollProgress } from "@/components/Reveal";
 import {
   Dialog,
@@ -258,6 +258,7 @@ function Index() {
   const [scrolled, setScrolled] = useState(false);
   const [selectedClient, setSelectedClient] = useState<ClientEvent | null>(null);
   const [selectedPartner, setSelectedPartner] = useState<(typeof partnerships)[0] | null>(null);
+  const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(null);
   const progress = useScrollProgress();
 
   useEffect(() => {
@@ -266,6 +267,29 @@ function Index() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (activeLightboxIndex === null || !selectedClient) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setActiveLightboxIndex(null);
+      } else if (e.key === "ArrowRight") {
+        setActiveLightboxIndex((prev) =>
+          prev !== null ? (prev + 1) % selectedClient.photos.length : 0
+        );
+      } else if (e.key === "ArrowLeft") {
+        setActiveLightboxIndex((prev) =>
+          prev !== null
+            ? (prev - 1 + selectedClient.photos.length) % selectedClient.photos.length
+            : 0
+        );
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeLightboxIndex, selectedClient]);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -835,10 +859,15 @@ function Index() {
         </section>
       </main>
 
-      {/* DIALOG DETALHES DO EVENTO & FOTOS */}
+      {/* DIALOG DETALHES DO CLIENTE */}
       <Dialog
         open={Boolean(selectedClient)}
-        onOpenChange={(isOpen) => !isOpen && setSelectedClient(null)}
+        onOpenChange={(isOpen) => {
+          if (!isOpen) {
+            setSelectedClient(null);
+            setActiveLightboxIndex(null);
+          }
+        }}
       >
         <DialogContent className="max-w-2xl max-h-[88vh] overflow-y-auto border border-border bg-background/95 p-6 backdrop-blur-2xl sm:rounded-2xl sm:p-8">
           {selectedClient && (
@@ -875,17 +904,27 @@ function Index() {
                 {selectedClient.photos.length > 0 ? (
                   <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                     {selectedClient.photos.map((photo, idx) => (
-                      <div
+                      <button
                         key={idx}
-                        className="group/photo relative aspect-square overflow-hidden rounded-xl border border-border bg-surface"
+                        type="button"
+                        onClick={() => setActiveLightboxIndex(idx)}
+                        className="group/photo relative aspect-square overflow-hidden rounded-xl border border-border bg-surface text-left transition-colors duration-200 hover:border-silver/60 focus:outline-none focus:ring-1 focus:ring-silver/40 cursor-pointer"
                       >
                         <img
                           src={photo}
                           alt={`${selectedClient.name} - Foto ${idx + 1}`}
-                          className="h-full w-full object-cover transition-transform duration-500 group-hover/photo:scale-105"
+                          className="h-full w-full object-cover"
                           loading="lazy"
                         />
-                      </div>
+                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 opacity-0 transition-opacity duration-200 group-hover/photo:opacity-100 backdrop-blur-[2px]">
+                          <div className="grid h-9 w-9 place-items-center rounded-full bg-silver/90 text-background shadow-lg transition-transform duration-200 group-hover/photo:scale-110">
+                            <ZoomIn className="h-4 w-4" />
+                          </div>
+                          <span className="mt-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-white">
+                            Expandir
+                          </span>
+                        </div>
+                      </button>
                     ))}
                   </div>
                 ) : (
@@ -972,6 +1011,109 @@ function Index() {
           <span>Filmmaker · Live · Estratégia de conteúdo</span>
         </div>
       </footer>
+      {/* LIGHTBOX DE FOTOS EXPANDIDAS */}
+      {selectedClient && activeLightboxIndex !== null && selectedClient.photos[activeLightboxIndex] && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-between bg-black/95 p-4 sm:p-6 backdrop-blur-2xl animate-in fade-in duration-200"
+          onClick={() => setActiveLightboxIndex(null)}
+        >
+          {/* Barra superior */}
+          <div
+            className="flex w-full max-w-6xl items-center justify-between z-10"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div>
+              <p className="font-display text-sm font-semibold tracking-wide text-foreground sm:text-base">
+                {selectedClient.name}
+              </p>
+              <p className="text-[0.68rem] uppercase tracking-wider text-muted-foreground">
+                Foto {activeLightboxIndex + 1} de {selectedClient.photos.length}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setActiveLightboxIndex(null)}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border/80 bg-surface/80 text-foreground transition-colors hover:bg-surface hover:text-white"
+              aria-label="Fechar visualização"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
+
+          {/* Imagem Central */}
+          <div
+            className="relative flex flex-1 w-full items-center justify-center py-2 overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {selectedClient.photos.length > 1 && (
+              <button
+                type="button"
+                onClick={() =>
+                  setActiveLightboxIndex((prev) =>
+                    prev !== null
+                      ? (prev - 1 + selectedClient.photos.length) % selectedClient.photos.length
+                      : 0
+                  )
+                }
+                className="absolute left-2 sm:left-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-border/80 bg-background/80 text-foreground backdrop-blur-md transition-all hover:bg-surface hover:scale-105 active:scale-95"
+                aria-label="Foto anterior"
+              >
+                <ChevronLeft className="h-6 w-6" />
+              </button>
+            )}
+
+            <img
+              src={selectedClient.photos[activeLightboxIndex]}
+              alt={`${selectedClient.name} - Foto ${activeLightboxIndex + 1}`}
+              className="max-h-[78vh] max-w-[92vw] rounded-xl object-contain shadow-2xl transition-transform duration-200"
+            />
+
+            {selectedClient.photos.length > 1 && (
+              <button
+                type="button"
+                onClick={() =>
+                  setActiveLightboxIndex((prev) =>
+                    prev !== null ? (prev + 1) % selectedClient.photos.length : 0
+                  )
+                }
+                className="absolute right-2 sm:right-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-border/80 bg-background/80 text-foreground backdrop-blur-md transition-all hover:bg-surface hover:scale-105 active:scale-95"
+                aria-label="Próxima foto"
+              >
+                <ChevronRight className="h-6 w-6" />
+              </button>
+            )}
+          </div>
+
+          {/* Miniaturas inferiores */}
+          {selectedClient.photos.length > 1 && (
+            <div
+              className="flex max-w-full items-center gap-2 overflow-x-auto py-2 z-10 px-2"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {selectedClient.photos.map((photo, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setActiveLightboxIndex(idx)}
+                  className={`relative h-14 w-14 shrink-0 overflow-hidden rounded-lg border-2 transition-all ${
+                    idx === activeLightboxIndex
+                      ? "border-silver ring-2 ring-silver/30 scale-105"
+                      : "border-transparent opacity-50 hover:opacity-100"
+                  }`}
+                >
+                  <img
+                    src={photo}
+                    alt={`Miniatura ${idx + 1}`}
+                    className="h-full w-full object-cover"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
