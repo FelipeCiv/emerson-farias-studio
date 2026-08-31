@@ -230,12 +230,17 @@ const clientsData: ClientEvent[] = [
     photos: [],
   },
   {
-    name: "Leilão do Neymar",
+    name: "Neymar",
     category: "Gala & Eventos Beneficentes",
     highlight: "Cobertura VIP Exclusiva",
     description:
       "Direção de imagem e captação de bastidores em evento de gala beneficente, documentando personalidades, leilões ao vivo e momentos exclusivos com padrão de cinema.",
-    photos: [],
+    photos: [
+      "/clientes/Neymar/@lunavmaker3735.jpg",
+      "/clientes/Neymar/@lunavmaker3736.jpg",
+      "/clientes/Neymar/@lunavmaker4789.jpg",
+      "/clientes/Neymar/@lunavmaker4790.jpg",
+    ],
   },
 ];
 
