@@ -1,6 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowUpRight, Instagram, Camera, Images, Globe, Sparkles, Layout, Monitor, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, Instagram, Camera, Images, Globe, Sparkles, Layout, Monitor, ZoomIn, ChevronLeft, ChevronRight, Play, Film } from "lucide-react";
 import { Reveal, useScrollProgress } from "@/components/Reveal";
 import {
   Dialog,
@@ -46,6 +46,7 @@ export const Route = createFileRoute("/")({
 const nav = [
   { label: "Sobre", href: "#sobre" },
   { label: "Serviços", href: "#servicos" },
+  { label: "Vídeos 🎬", href: "/videos", isRoute: true },
   { label: "Sites", href: "#sites" },
   { label: "Trabalhos", href: "#trabalhos" },
   { label: "Clientes", href: "#clientes" },
@@ -315,15 +316,25 @@ function Index() {
           </a>
           <div className="flex shrink-0 items-center gap-6">
             <nav className="hidden gap-7 lg:flex">
-              {nav.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="link-underline text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  {item.label}
-                </a>
-              ))}
+              {nav.map((item) =>
+                item.isRoute ? (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    className="link-underline text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-silver transition-colors hover:text-foreground flex items-center gap-1"
+                  >
+                    <span>{item.label}</span>
+                  </Link>
+                ) : (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="link-underline text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {item.label}
+                  </a>
+                )
+              )}
             </nav>
             <a
               href="#contato"
@@ -348,16 +359,28 @@ function Index() {
           }`}
         >
           <nav className="mx-auto flex max-w-6xl flex-col gap-1 px-5 py-4">
-            {nav.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 text-xs uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-              >
-                {item.label}
-              </a>
-            ))}
+            {nav.map((item) =>
+              item.isRoute ? (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  onClick={() => setOpen(false)}
+                  className="rounded-lg px-3 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-silver transition-colors hover:bg-secondary hover:text-foreground flex items-center justify-between"
+                >
+                  <span>{item.label}</span>
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </Link>
+              ) : (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="rounded-lg px-3 py-3 text-xs uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                >
+                  {item.label}
+                </a>
+              )
+            )}
           </nav>
         </div>
       </header>
@@ -388,16 +411,23 @@ function Index() {
                 </p>
               </Reveal>
               <Reveal delay={340}>
-                <div className="mt-9 flex flex-wrap gap-3 sm:gap-4">
+                <div className="mt-9 flex flex-wrap items-center gap-3 sm:gap-4">
                   <a
                     href="#contato"
                     className="btn-silver rounded-full px-7 py-3.5 text-[0.7rem] font-semibold uppercase tracking-[0.18em] sm:px-8"
                   >
                     Solicitar orçamento
                   </a>
+                  <Link
+                    to="/videos"
+                    className="group inline-flex items-center gap-2 rounded-full border border-silver/40 bg-silver/10 px-6 py-3.5 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-silver transition-all duration-300 hover:border-silver hover:bg-silver/20 hover:scale-[1.02]"
+                  >
+                    <Play className="h-3.5 w-3.5 fill-silver text-silver transition-transform group-hover:scale-110" />
+                    <span>Vídeos & Reels 🎬</span>
+                  </Link>
                   <a
                     href="#trabalhos"
-                    className="btn-outline-silver rounded-full px-7 py-3.5 text-[0.7rem] font-semibold uppercase tracking-[0.18em] sm:px-8"
+                    className="btn-outline-silver rounded-full px-6 py-3.5 text-[0.7rem] font-semibold uppercase tracking-[0.18em]"
                   >
                     Ver trabalhos
                   </a>
@@ -770,8 +800,43 @@ function Index() {
                 </Reveal>
               ))}
             </div>
+            
+            {/* BANNER DE DESTAQUE PARA A PÁGINA DE VÍDEOS */}
+            <Reveal delay={150} className="mt-10">
+              <div className="relative overflow-hidden rounded-2xl border border-silver/40 bg-gradient-to-r from-surface/90 via-surface/60 to-surface/90 p-6 sm:p-8 backdrop-blur-xl shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div className="flex items-center gap-4">
+                  <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-silver/40 bg-silver/10 text-silver shadow-inner">
+                    <Film className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="rounded-full border border-silver/30 bg-silver/10 px-2.5 py-0.5 text-[0.58rem] font-bold uppercase tracking-wider text-silver">
+                        Nova Página
+                      </span>
+                      <span className="text-[0.68rem] uppercase tracking-wider text-muted-foreground">
+                        4 Vídeos Cinemáticos em Destaque
+                      </span>
+                    </div>
+                    <h4 className="mt-1 font-display text-base font-bold text-foreground sm:text-lg">
+                      Quer ver a dinâmica de gravação e ritmo de palco?
+                    </h4>
+                    <p className="mt-1 text-xs text-muted-foreground sm:text-sm">
+                      Acesse nossa página exclusiva de vídeos e aftermovies em alta definição gravados em eventos e bastidores.
+                    </p>
+                  </div>
+                </div>
+                <Link
+                  to="/videos"
+                  className="btn-silver shrink-0 inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-xs font-semibold uppercase tracking-wider"
+                >
+                  <Play className="h-3.5 w-3.5 fill-current" />
+                  <span>Ver Vídeos & Reels</span>
+                </Link>
+              </div>
+            </Reveal>
+
             <Reveal>
-              <p className="mt-8 text-[0.65rem] uppercase tracking-[0.16em] text-muted-foreground">
+              <p className="mt-6 text-[0.65rem] uppercase tracking-[0.16em] text-muted-foreground">
                 Imagens ilustrativas — acervo oficial em atualização.
               </p>
             </Reveal>
