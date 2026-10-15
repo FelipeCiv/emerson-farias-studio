@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowUpRight, Instagram, Camera, Images, Globe, Sparkles, Layout, Monitor, ZoomIn, ChevronLeft, ChevronRight, Play, Film } from "lucide-react";
+import { Menu, X, ArrowUpRight, Instagram, Camera, Images, Globe, Sparkles, Layout, Monitor, ZoomIn, ChevronLeft, ChevronRight, Play, Film, MessageCircle } from "lucide-react";
 import { Reveal, useScrollProgress } from "@/components/Reveal";
 import {
   Dialog,
@@ -1082,16 +1082,13 @@ function Index() {
             <Reveal delay={240}>
               <div className="mt-10 flex flex-wrap justify-center gap-3 sm:gap-4">
                 <a
-                  href="https://wa.me/5500000000000"
-                  className="btn-silver rounded-full px-8 py-3.5 text-[0.7rem] font-semibold uppercase tracking-[0.18em]"
+                  href="https://wa.me/5511983742911?text=Ol%C3%A1%20Emerson!%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-silver inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-[0.7rem] font-semibold uppercase tracking-[0.18em]"
                 >
-                  WhatsApp
-                </a>
-                <a
-                  href="mailto:contato@emersonfarias.com"
-                  className="btn-outline-silver rounded-full px-8 py-3.5 text-[0.7rem] font-semibold uppercase tracking-[0.18em]"
-                >
-                  E-mail
+                  <MessageCircle className="h-4 w-4" />
+                  <span>Chamar no WhatsApp</span>
                 </a>
               </div>
             </Reveal>

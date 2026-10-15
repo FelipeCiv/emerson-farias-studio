@@ -311,7 +311,7 @@ function VideosPage() {
           </Link>
 
           <a
-            href="https://wa.me/5500000000000?text=Ol%C3%A1%20Emerson!%20Vi%20os%20seus%20v%C3%ADdeos%20no%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
+            href="https://wa.me/5511983742911?text=Ol%C3%A1%20Emerson!%20Vi%20os%20seus%20v%C3%ADdeos%20no%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
             target="_blank"
             rel="noopener noreferrer"
             className="btn-silver inline-flex items-center gap-2 rounded-full px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] sm:px-5 sm:py-2.5 sm:text-xs"
@@ -505,7 +505,7 @@ function VideosPage() {
             <Reveal delay={220}>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                 <a
-                  href="https://wa.me/5500000000000?text=Ol%C3%A1%20Emerson!%20Gostei%20muito%20dos%20v%C3%ADdeos%20e%20gostaria%20de%20conversar%20sobre%20o%20meu%20evento."
+                  href="https://wa.me/5511983742911?text=Ol%C3%A1%20Emerson!%20Gostei%20muito%20dos%20v%C3%ADdeos%20e%20gostaria%20de%20conversar%20sobre%20o%20meu%20evento."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-silver inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.18em]"
