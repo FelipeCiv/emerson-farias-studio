@@ -148,87 +148,253 @@ const clientsData: ClientEvent[] = [
     highlight: "2 anos · 300+ Eventos",
     description:
       "Dois anos de atuação contínua na direção de transmissões ao vivo de altíssimo alcance, cobertura em tempo real nos bastidores como stories maker e criação de narrativas estratégicas para grandes eventos presenciais e lançamentos.",
-    photos: [],
+    photos: [
+      "/clientes/Pablo Marçal/IMG_8267.PNG",
+      "/clientes/Pablo Marçal/IMG_8268.PNG",
+    ],
   },
   {
-    name: "Cela",
+    name: "Anitta",
+    category: "Filmmaker & Eventos",
+    highlight: "Cobertura Exclusiva",
+    description:
+      "Captação cinematográfica de alto impacto em eventos com Anitta, registrando bastidores, palco e momentos exclusivos com padrão de produção internacional.",
+    photos: [
+      "/clientes/Anitta/IMG_7799.JPG",
+      "/clientes/Anitta/IMG_7800.JPG",
+      "/clientes/Anitta/IMG_7801.JPG",
+      "/clientes/Anitta/IMG_7802.JPG",
+      "/clientes/Anitta/IMG_7803.JPG",
+      "/clientes/Anitta/IMG_7804.JPG",
+      "/clientes/Anitta/IMG_7805.JPG",
+      "/clientes/Anitta/IMG_7806.JPG",
+      "/clientes/Anitta/IMG_7807.JPG",
+      "/clientes/Anitta/IMG_7808.JPG",
+      "/clientes/Anitta/IMG_7809.JPG",
+      "/clientes/Anitta/IMG_7810.JPG",
+      "/clientes/Anitta/IMG_7811.JPG",
+      "/clientes/Anitta/IMG_7812.JPG",
+      "/clientes/Anitta/IMG_7813.JPG",
+      "/clientes/Anitta/IMG_7814.JPG",
+      "/clientes/Anitta/IMG_7815.JPG",
+      "/clientes/Anitta/IMG_7816.JPG",
+      "/clientes/Anitta/IMG_7817.JPG",
+      "/clientes/Anitta/IMG_7818.JPG",
+      "/clientes/Anitta/IMG_7819.JPG",
+      "/clientes/Anitta/IMG_7821.JPG",
+      "/clientes/Anitta/IMG_7822.JPG",
+      "/clientes/Anitta/IMG_7823.JPG",
+      "/clientes/Anitta/IMG_7824.JPG",
+      "/clientes/Anitta/IMG_7825.JPG",
+      "/clientes/Anitta/IMG_7826.JPG",
+      "/clientes/Anitta/IMG_7827.JPG",
+      "/clientes/Anitta/IMG_7828.JPG",
+      "/clientes/Anitta/IMG_7829.JPG",
+      "/clientes/Anitta/IMG_7830.JPG",
+      "/clientes/Anitta/IMG_7831.JPG",
+      "/clientes/Anitta/IMG_7832.JPG",
+      "/clientes/Anitta/IMG_7833.JPG",
+      "/clientes/Anitta/IMG_7834.JPG",
+      "/clientes/Anitta/IMG_7835.JPG",
+      "/clientes/Anitta/IMG_7836.JPG",
+      "/clientes/Anitta/IMG_7837.JPG",
+      "/clientes/Anitta/IMG_7838.JPG",
+      "/clientes/Anitta/IMG_7839.JPG",
+      "/clientes/Anitta/IMG_7840.JPG",
+      "/clientes/Anitta/IMG_7841.JPG",
+      "/clientes/Anitta/IMG_7842.JPG",
+      "/clientes/Anitta/IMG_7843.JPG",
+      "/clientes/Anitta/IMG_7844.JPG",
+      "/clientes/Anitta/IMG_7845.JPG",
+      "/clientes/Anitta/IMG_7846.JPG",
+      "/clientes/Anitta/IMG_7847.JPG",
+      "/clientes/Anitta/IMG_7848.JPG",
+      "/clientes/Anitta/IMG_7849.JPG",
+      "/clientes/Anitta/IMG_7850.JPG",
+      "/clientes/Anitta/IMG_7851.JPG",
+      "/clientes/Anitta/IMG_7852.JPG",
+      "/clientes/Anitta/IMG_7853.JPG",
+      "/clientes/Anitta/IMG_7854.JPG",
+      "/clientes/Anitta/IMG_7855.JPG",
+      "/clientes/Anitta/IMG_7857.JPG",
+      "/clientes/Anitta/IMG_7858.JPG",
+      "/clientes/Anitta/IMG_7859.JPG",
+      "/clientes/Anitta/IMG_7860.JPG",
+      "/clientes/Anitta/IMG_7861.JPG",
+      "/clientes/Anitta/IMG_7862.JPG",
+      "/clientes/Anitta/IMG_7863.JPG",
+      "/clientes/Anitta/IMG_7864.JPG",
+      "/clientes/Anitta/IMG_7865.JPG",
+      "/clientes/Anitta/IMG_7866.JPG",
+      "/clientes/Anitta/IMG_7868.JPG",
+      "/clientes/Anitta/IMG_7869.JPG",
+      "/clientes/Anitta/IMG_7870.JPG",
+      "/clientes/Anitta/IMG_7871.JPG",
+      "/clientes/Anitta/IMG_7872.JPG",
+      "/clientes/Anitta/IMG_7873.JPG",
+      "/clientes/Anitta/IMG_7874.JPG",
+      "/clientes/Anitta/IMG_7875.JPG",
+      "/clientes/Anitta/IMG_7876.JPG",
+      "/clientes/Anitta/IMG_7877.JPG",
+      "/clientes/Anitta/IMG_7878.JPG",
+      "/clientes/Anitta/IMG_7879.JPG",
+      "/clientes/Anitta/IMG_7880.JPG",
+      "/clientes/Anitta/IMG_7881.JPG",
+      "/clientes/Anitta/IMG_7882.JPG",
+      "/clientes/Anitta/IMG_7883.JPG",
+      "/clientes/Anitta/IMG_7884.JPG",
+      "/clientes/Anitta/IMG_7885.JPG",
+      "/clientes/Anitta/IMG_7887.JPG",
+      "/clientes/Anitta/IMG_7888.JPG",
+      "/clientes/Anitta/IMG_7889.JPG",
+      "/clientes/Anitta/IMG_7890.JPG",
+      "/clientes/Anitta/IMG_7891.JPG",
+      "/clientes/Anitta/IMG_7892.JPG",
+      "/clientes/Anitta/IMG_7893.JPG",
+      "/clientes/Anitta/IMG_7894.JPG",
+      "/clientes/Anitta/IMG_7895.JPG",
+      "/clientes/Anitta/IMG_7896.JPG",
+      "/clientes/Anitta/IMG_7897.JPG",
+      "/clientes/Anitta/IMG_7898.JPG",
+      "/clientes/Anitta/IMG_7899.JPG",
+      "/clientes/Anitta/F73F80F0-14E0-45EA-8BCF-980E0D261EDD.png",
+      "/clientes/Anitta/IMG_5769.PNG",
+    ],
+  },
+  {
+    name: "Ronaldo",
+    category: "Produção Internacional & Copa",
+    highlight: "Rede Ronaldo · EUA",
+    description:
+      "Cobertura audiovisual ao lado da Rede Ronaldo, registrando momentos de alto impacto em eventos esportivos e produzindo conteúdo de alcance internacional.",
+    photos: [
+      "/clientes/Ronaldo/@lunavmaker-3513.jpg",
+      "/clientes/Ronaldo/@lunavmaker-3610.jpg",
+      "/clientes/Ronaldo/@lunavmaker-3611.jpg",
+      "/clientes/Ronaldo/@lunavmaker-3612.jpg",
+    ],
+  },
+  {
+    name: "Marcos Mion",
+    category: "Filmmaker & Eventos",
+    highlight: "Cobertura VIP",
+    description:
+      "Captação exclusiva em eventos com Marcos Mion, registrando bastidores e momentos de palco com direção de imagem de alto nível.",
+    photos: [
+      "/clientes/Marcos Mion/0E8D7E6A-22F3-409C-9E6C-8F65B6711310.jpg",
+      "/clientes/Marcos Mion/1D052DF6-7D9D-4FA0-ABC8-C5C45DF7E25A.jpg",
+      "/clientes/Marcos Mion/4379D68E-89A1-4061-ADDC-B191C5FAFC14.jpg",
+      "/clientes/Marcos Mion/FE88D3D6-E7BE-4646-A450-84922776B76D.jpg",
+    ],
+  },
+  {
+    name: "Virginia",
+    category: "Filmmaker & Lifestyle",
+    highlight: "Cobertura Exclusiva",
+    description:
+      "Produção audiovisual e cobertura de eventos com Virginia, capturando momentos únicos com estética refinada e narrativa de alto engajamento.",
+    photos: [
+      "/clientes/Virginia/@lunavmaker-3552.jpg",
+      "/clientes/Virginia/@lunavmaker-3553.jpg",
+      "/clientes/Virginia/@lunavmaker-3581.jpg",
+      "/clientes/Virginia/@lunavmaker-3607.jpg",
+    ],
+  },
+  {
+    name: "Gil do Vigor",
+    category: "Filmmaker & Eventos",
+    highlight: "Cobertura de Palco",
+    description:
+      "Captação cinematográfica em eventos com Gil do Vigor, registrando energia de palco, bastidores e momentos de conexão com o público.",
+    photos: [
+      "/clientes/Gil do Vigor/080C6D57-CBDC-44DA-9194-36E820993CA2.jpg",
+      "/clientes/Gil do Vigor/54349FF7-8381-4EEB-A872-CF5136906308.jpg",
+      "/clientes/Gil do Vigor/950EE92E-2BD8-4476-89DA-D0D199B18528.jpg",
+      "/clientes/Gil do Vigor/C14E324E-170A-4811-ADF3-E3AC50A6D899.jpg",
+    ],
+  },
+  {
+    name: "Jade Picon",
+    category: "Filmmaker & Lifestyle",
+    highlight: "Produção Exclusiva",
+    description:
+      "Produção audiovisual com Jade Picon, captando momentos de estilo e presença com direção de imagem de alto padrão.",
+    photos: [
+      "/clientes/Jade Picon/607FE204-BEA8-4AF6-8C92-AD55B3C0B720.jpg",
+    ],
+  },
+  {
+    name: "Pereira Amorim",
+    category: "Filmmaker & Eventos",
+    highlight: "Cobertura Completa",
+    description:
+      "Cobertura audiovisual completa de eventos com Pereira Amorim, entregando material de alta qualidade para redes sociais e acervo.",
+    photos: [
+      "/clientes/Pereira Amorim/IMG_7944.JPG",
+      "/clientes/Pereira Amorim/IMG_7945.JPG",
+      "/clientes/Pereira Amorim/IMG_7946.JPG",
+      "/clientes/Pereira Amorim/IMG_7947.JPG",
+      "/clientes/Pereira Amorim/IMG_7948.JPG",
+    ],
+  },
+  {
+    name: "Jamilly",
     category: "Stories Maker & Lifestyle",
     highlight: "Cobertura em Tempo Real",
     description:
-      "Captação ágil de bastidores com narrativa de stories focada em retenção imediata, conexão com o público e engajamento durante eventos.",
-    photos: [],
+      "Cobertura dinâmica e narrativa de stories com Jamilly, entregando conteúdo de alto impacto durante eventos e produções.",
+    photos: [
+      "/clientes/Jamilly/3EB45DF4-83CF-43D6-A986-A15E1E2491AC.jpg",
+      "/clientes/Jamilly/771A601E-B5B2-4C8B-B432-DB218914A131.jpg",
+      "/clientes/Jamilly/AC77B2D0-A567-4DDD-9FA7-6D320EC5AA9C.jpg",
+      "/clientes/Jamilly/C19A8943-D64C-461B-A08D-FE9806652F8D.jpg",
+    ],
   },
   {
-    name: "Coringa",
-    category: "Conteúdo Vertical & Eventos",
-    highlight: "Reels, Shorts & Vlog",
+    name: "Karina Bacci",
+    category: "Filmmaker & Eventos",
+    highlight: "Produção Visual",
     description:
-      "Produção de conteúdo dinâmico em eventos de entretenimento, unindo linguagem de vlog no YouTube a formatos verticais de alta conversão.",
-    photos: [],
+      "Captação e produção audiovisual com Karina Bacci, com entregas rápidas e alta qualidade visual para eventos e redes sociais.",
+    photos: [
+      "/clientes/Karina Bacci/6F959B79-97BA-4F58-886F-48C3DFE590D0.jpg",
+      "/clientes/Karina Bacci/E630E480-C34A-4F8E-B1D9-04DC8498DAC3.jpg",
+    ],
   },
   {
-    name: "Pyong Lee",
-    category: "Produção Audiovisual & Eventos",
-    highlight: "Palestras & Bastidores",
+    name: "Alfredo Soares",
+    category: "Filmmaker & Eventos",
+    highlight: "Cobertura Completa",
     description:
-      "Captação cinematográfica e cobertura de presença em palestras, convenções e eventos corporativos, com foco em dinamismo, autoridade e retenção.",
-    photos: [],
+      "Produção audiovisual de alto nível com Alfredo Soares, registrando eventos, palestras e bastidores com direção de imagem cinematográfica.",
+    photos: [
+      "/clientes/Alfredo Soares/7B83AA38-6F34-4B12-B4B7-92ECAC25CCB1.jpg",
+      "/clientes/Alfredo Soares/A5936DA8-21CC-4361-B86B-354FAF22A2A4.jpg",
+      "/clientes/Alfredo Soares/AAB37988-D0E6-45C4-AA3F-709B3EC74077.jpg",
+    ],
   },
   {
-    name: "Thallyson",
-    category: "Filmmaker & Imersões",
-    highlight: "Eventos Presenciais",
+    name: "André Castilho",
+    category: "Filmmaker & Eventos",
+    highlight: "Produção Visual",
     description:
-      "Captação de momentos de impacto, palestras e bastidores, criando materiais de posicionamento de alto valor para redes e lançamentos.",
-    photos: [],
+      "Captação e direção de imagem com André Castilho, produzindo conteúdo de alta qualidade para eventos e projetos audiovisuais.",
+    photos: [
+      "/clientes/André Castilho/1F297552-0CE4-422A-B455-2B3B1D1F226D.jpg",
+      "/clientes/André Castilho/C6AB131F-7C87-495B-9D97-943248956D44.jpg",
+    ],
   },
   {
-    name: "Aricia",
-    category: "Social Media & Stories Maker",
-    highlight: "Eventos & Presença VIP",
+    name: "Carlão IronBerg",
+    category: "Filmmaker & Eventos",
+    highlight: "Cobertura de Palco",
     description:
-      "Cobertura completa com entrega rápida de vídeos e fotos durante o evento, garantindo publicação em tempo real com qualidade refinada.",
-    photos: [],
-  },
-  {
-    name: "Marcos Paulo",
-    category: "Estratégia & Infoprodutos",
-    highlight: "Lançamentos & Imersões",
-    description:
-      "Captação estratégica para infoprodutores, documentando imersões presenciais e gerando insumos visuais para funis de alta performance.",
-    photos: [],
-  },
-  {
-    name: "Sergião Foguetes",
-    category: "Podcasts & Cobertura",
-    highlight: "Gravações & Ciência",
-    description:
-      "Captação em estúdio, registros de palestras e produção de conteúdo dinâmico nos bastidores de gravações e eventos especiais.",
-    photos: [],
-  },
-  {
-    name: "Red Cast",
-    category: "Podcast & Multicâmera",
-    highlight: "Estúdio & Broadcast",
-    description:
-      "Direção técnica de transmissão e gravação multicâmera para podcasts em estúdio, com iluminação profissional e cortes rápidos para YouTube e redes sociais.",
-    photos: [],
-  },
-  {
-    name: "Rede Ronaldo",
-    category: "Produção Internacional",
-    highlight: "Copa do Mundo 2026",
-    description:
-      "Cobertura audiovisual internacional para a Rede Ronaldo nos Estados Unidos, acompanhando grandes momentos esportivos e gerando conteúdo dinâmico.",
-    photos: [],
-  },
-  {
-    name: "Kiwify",
-    category: "Megaeventos & Infoprodutos",
-    highlight: "Kiwify Festival · Imersões",
-    description:
-      "Produção audiovisual e transmissões para um dos maiores ecossistemas de infoprodutos do país, com captação de palcos principais, imersões e aftermovies.",
-    photos: [],
+      "Produção audiovisual dinâmica com Carlão IronBerg, capturando energia de eventos e momentos de alto impacto com padrão cinematográfico.",
+    photos: [
+      "/clientes/Carlão IronBerg/IMG_5856.JPG",
+      "/clientes/Carlão IronBerg/IMG_5857.JPG",
+      "/clientes/Carlão IronBerg/IMG_5858.JPG",
+    ],
   },
   {
     name: "Neymar",
@@ -260,6 +426,7 @@ function Index() {
   const [selectedClient, setSelectedClient] = useState<ClientEvent | null>(null);
   const [selectedPartner, setSelectedPartner] = useState<(typeof partnerships)[0] | null>(null);
   const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(null);
+  const [shownPhotosCount, setShownPhotosCount] = useState(12);
   const progress = useScrollProgress();
 
   useEffect(() => {
@@ -268,6 +435,12 @@ function Index() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Reset photo pagination when client changes
+  useEffect(() => {
+    setShownPhotosCount(12);
+    setActiveLightboxIndex(null);
+  }, [selectedClient]);
 
   useEffect(() => {
     if (activeLightboxIndex === null || !selectedClient) return;
@@ -856,13 +1029,15 @@ function Index() {
               </p>
               <div className="rule-silver mt-6" />
             </Reveal>
-            <ul className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-border sm:grid-cols-3 lg:grid-cols-4">
+            <ul className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-border lg:grid-cols-4">
               {clientsData.map((c, i) => (
                 <Reveal
                   key={c.name}
                   as="li"
                   delay={(i % 4) * 80}
-                  className="bg-background transition-all duration-500 hover:bg-surface-2"
+                  className={`bg-background transition-all duration-500 hover:bg-surface-2 ${
+                    i >= 12 ? "lg:col-span-2" : ""
+                  }`}
                 >
                   <button
                     type="button"
@@ -967,30 +1142,44 @@ function Index() {
                 </div>
 
                 {selectedClient.photos.length > 0 ? (
-                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-                    {selectedClient.photos.map((photo, idx) => (
-                      <button
-                        key={idx}
-                        type="button"
-                        onClick={() => setActiveLightboxIndex(idx)}
-                        className="group/photo relative aspect-square overflow-hidden rounded-xl border border-border bg-surface text-left transition-colors duration-200 hover:border-silver/60 focus:outline-none focus:ring-1 focus:ring-silver/40 cursor-pointer"
-                      >
-                        <img
-                          src={photo}
-                          alt={`${selectedClient.name} - Foto ${idx + 1}`}
-                          className="h-full w-full object-cover"
-                          loading="lazy"
-                        />
-                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 opacity-0 transition-opacity duration-200 group-hover/photo:opacity-100 backdrop-blur-[2px]">
-                          <div className="grid h-9 w-9 place-items-center rounded-full bg-silver/90 text-background shadow-lg transition-transform duration-200 group-hover/photo:scale-110">
-                            <ZoomIn className="h-4 w-4" />
+                  <div>
+                    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+                      {selectedClient.photos.slice(0, shownPhotosCount).map((photo, idx) => (
+                        <button
+                          key={photo}
+                          type="button"
+                          onClick={() => setActiveLightboxIndex(idx)}
+                          className="group/photo relative aspect-square overflow-hidden rounded-xl border border-border bg-surface text-left transition-colors duration-200 hover:border-silver/60 focus:outline-none focus:ring-1 focus:ring-silver/40 cursor-pointer"
+                        >
+                          <img
+                            src={photo}
+                            alt={`${selectedClient.name} - Foto ${idx + 1}`}
+                            className="h-full w-full object-cover"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 opacity-0 transition-opacity duration-200 group-hover/photo:opacity-100 backdrop-blur-[2px]">
+                            <div className="grid h-9 w-9 place-items-center rounded-full bg-silver/90 text-background shadow-lg transition-transform duration-200 group-hover/photo:scale-110">
+                              <ZoomIn className="h-4 w-4" />
+                            </div>
+                            <span className="mt-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-white">
+                              Expandir
+                            </span>
                           </div>
-                          <span className="mt-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-white">
-                            Expandir
-                          </span>
-                        </div>
+                        </button>
+                      ))}
+                    </div>
+                    {/* Load more button */}
+                    {shownPhotosCount < selectedClient.photos.length && (
+                      <button
+                        type="button"
+                        onClick={() => setShownPhotosCount((prev) => prev + 12)}
+                        className="mt-4 w-full rounded-xl border border-silver/30 bg-silver/10 py-3 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-silver transition-all hover:bg-silver/20 hover:border-silver/60"
+                      >
+                        Ver mais {Math.min(12, selectedClient.photos.length - shownPhotosCount)} fotos
+                        <span className="ml-2 text-silver/60">({shownPhotosCount}/{selectedClient.photos.length})</span>
                       </button>
-                    ))}
+                    )}
                   </div>
                 ) : (
                   <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-silver/25 bg-surface/40 p-8 text-center sm:p-10">
